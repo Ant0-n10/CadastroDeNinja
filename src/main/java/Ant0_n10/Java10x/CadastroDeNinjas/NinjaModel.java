@@ -1,6 +1,9 @@
 package Ant0_n10.Java10x.CadastroDeNinjas;
 
+import Ant0_n10.Java10x.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")
@@ -9,9 +12,16 @@ public class NinjaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
+
     private String nome;
+
     private int idade;
+
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") // Foreng Key
+    private MissoesModel missoes;
 
     public NinjaModel() {}
 
