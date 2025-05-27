@@ -1,12 +1,10 @@
-package Ant0_n10.Java10x.CadastroDeNinjas;
+package Ant0_n10.Java10x.CadastroDeNinjas.Ninjas;
 
 import Ant0_n10.Java10x.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")

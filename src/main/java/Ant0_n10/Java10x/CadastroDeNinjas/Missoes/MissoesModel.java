@@ -1,6 +1,6 @@
 package Ant0_n10.Java10x.CadastroDeNinjas.Missoes;
 
-import Ant0_n10.Java10x.CadastroDeNinjas.NinjaModel;
+import Ant0_n10.Java10x.CadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
