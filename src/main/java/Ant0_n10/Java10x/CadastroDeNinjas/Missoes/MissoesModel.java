@@ -23,8 +23,6 @@ public class MissoesModel {
 
     private String dificuldade;
 
-    private NinjaModel ninjaModel;
-
     @OneToMany(mappedBy = "missoes")
     private List<NinjaModel> ninjas;
 
