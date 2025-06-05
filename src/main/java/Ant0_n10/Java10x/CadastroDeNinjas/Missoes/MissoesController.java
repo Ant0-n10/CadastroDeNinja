@@ -3,11 +3,11 @@ package Ant0_n10.Java10x.CadastroDeNinjas.Missoes;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("missoes")
+@RequestMapping("/missoes")
 public class MissoesController {
 
     @GetMapping("/listar")
-    public String listaMissoes(){
+    public String listarMissoes(){
         return "Missões listadas";
     }
 
@@ -22,7 +22,7 @@ public class MissoesController {
     }
 
     @DeleteMapping("/deletar")
-    public String deletaMissao(){
+    public String deletarMissao(){
         return "Missao deletada";
     }
 }
