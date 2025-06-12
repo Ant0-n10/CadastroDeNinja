@@ -3,6 +3,7 @@ package Ant0_n10.Java10x.CadastroDeNinjas.Ninjas;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NinjaService {
@@ -16,4 +17,10 @@ public class NinjaService {
     public List<NinjaModel> listar(){
         return ninjaRepository.findAll();
     }
+
+    public NinjaModel listarPorId(Long id){
+        Optional<NinjaModel> optionalNinjaModel = ninjaRepository.findById(id);
+        return optionalNinjaModel.orElse(null);
+    }
+
 }

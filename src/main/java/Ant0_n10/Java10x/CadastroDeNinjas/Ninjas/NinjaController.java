@@ -23,21 +23,25 @@ public class NinjaController {
     public String criarNinja(){
         return "Ninja Criado";
     }
+
     //Read
     @GetMapping("/listar")
     public List<NinjaModel> listar(){
         return ninjaService.listar();
     }
+
     //Read by ID
-    @GetMapping("/listarId")
-    public String listarId(){
-        return "listar por Id";
+    @GetMapping("/listar/{id}")
+    public NinjaModel listarPorId(@PathVariable Long id){
+        return ninjaService.listarPorId(id);
     }
+
     //Update
     @PutMapping("/alterarId")
     public String alterarId(){
         return "Alterar";
     }
+
     //Delete
     @DeleteMapping("/deletarId")
     public String deletarId(){
