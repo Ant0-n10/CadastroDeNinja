@@ -23,4 +23,8 @@ public class NinjaService {
         return optionalNinjaModel.orElse(null);
     }
 
+    public NinjaModel criar(NinjaModel ninjaModel) {
+        return ninjaRepository.save(ninjaModel);
+    }
+
 }
