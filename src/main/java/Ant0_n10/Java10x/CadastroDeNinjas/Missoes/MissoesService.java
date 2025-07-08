@@ -14,6 +14,10 @@ public class MissoesService {
         this.missoesRepository = missoesRepository;
     }
 
+    public MissoesModel criar(MissoesModel missoesModel) {
+        return missoesRepository.save(missoesModel);
+    }
+
     public List<MissoesModel> listarMissoes(){
         return missoesRepository.findAll();
     }
@@ -21,5 +25,13 @@ public class MissoesService {
     public MissoesModel listarPorId(Long id){
         Optional<MissoesModel> optionalMissoesModel = missoesRepository.findById(id);
         return optionalMissoesModel.orElse(null);
+    }
+
+//    public MissoesModel alterarId(MissoesModel missoesModel) {
+//       return missoesRepository.saveAndFlush(missoesModel);
+//    }
+
+    public void deletarId(Long id) {
+        missoesRepository.deleteById(id);
     }
 }
