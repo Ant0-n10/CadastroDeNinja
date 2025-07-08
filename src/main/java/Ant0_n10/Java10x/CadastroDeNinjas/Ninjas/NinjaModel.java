@@ -2,13 +2,13 @@ package Ant0_n10.Java10x.CadastroDeNinjas.Ninjas;
 
 import Ant0_n10.Java10x.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "TB_CADASTRO")
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class NinjaModel {

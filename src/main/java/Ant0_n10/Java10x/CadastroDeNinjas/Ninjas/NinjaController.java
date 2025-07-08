@@ -37,8 +37,8 @@ public class NinjaController {
     }
 
     //Update
-    @PutMapping("/alterarId")
-    public String alterarId(){
+    @PutMapping("/atualizar")
+    public String atualizaId(){
         return "Alterar";
     }
 
