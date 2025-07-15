@@ -25,6 +25,8 @@ public class NinjaModel {
 
     private String email;
 
+    private String rank;
+
     @ManyToOne
     @JoinColumn(name = "missoes_id") // Foreing Key
     private MissoesModel missoes;
