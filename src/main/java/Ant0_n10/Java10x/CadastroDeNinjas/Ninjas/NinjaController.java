@@ -9,8 +9,11 @@ import java.util.List;
 public class NinjaController {
 
    NinjaService ninjaService;
-    public NinjaController(NinjaService ninjaService) {
+   NinjaMapper ninjaMapper;
+
+    public NinjaController(NinjaService ninjaService, NinjaMapper ninjaMapper) {
         this.ninjaService = ninjaService;
+        this.ninjaMapper = ninjaMapper;
     }
 
     @GetMapping("/boasvindas")
@@ -20,8 +23,8 @@ public class NinjaController {
 
     //Create
     @PostMapping("/criar")
-    public NinjaModel criar(@RequestBody NinjaModel ninjaModel){
-        return ninjaService.criar(ninjaModel);
+    public NinjaDTO criar(@RequestBody NinjaDTO ninja){
+        return ninjaService.criar(ninja);
     }
 
     //Read
