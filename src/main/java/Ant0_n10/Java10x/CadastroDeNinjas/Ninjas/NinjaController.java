@@ -9,6 +9,7 @@ import java.util.List;
 public class NinjaController {
 
    NinjaService ninjaService;
+
     public NinjaController(NinjaService ninjaService) {
         this.ninjaService = ninjaService;
     }
@@ -20,26 +21,26 @@ public class NinjaController {
 
     //Create
     @PostMapping("/criar")
-    public NinjaModel criar(@RequestBody NinjaModel ninjaModel){
-        return ninjaService.criar(ninjaModel);
+    public NinjaDTO criar(@RequestBody NinjaDTO ninja){
+        return ninjaService.criar(ninja);
     }
 
     //Read
     @GetMapping("/listar")
-    public List<NinjaModel> listar(){
+    public List<NinjaDTO> listar(){
         return ninjaService.listar();
     }
 
     //Read by ID
     @GetMapping("/listar/{id}")
-    public NinjaModel listarPorId(@PathVariable Long id){
+    public NinjaDTO listarPorId(@PathVariable Long id){
         return ninjaService.listarPorId(id);
     }
 
     //Update
     @PutMapping("/atualizar/{id}")
-    public NinjaModel atualizaId(@PathVariable Long id, @RequestBody NinjaModel ninjaModel){
-        return ninjaService.atualizaId(id, ninjaModel);
+    public NinjaDTO atualizaId(@PathVariable Long id, @RequestBody NinjaDTO ninjaDTO){
+        return ninjaService.atualizaId(id,ninjaDTO);
     }
 
     //Delete
