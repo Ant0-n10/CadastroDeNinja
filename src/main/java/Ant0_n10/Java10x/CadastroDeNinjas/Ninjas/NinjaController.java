@@ -1,5 +1,8 @@
 package Ant0_n10.Java10x.CadastroDeNinjas.Ninjas;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,31 +24,45 @@ public class NinjaController {
 
     //Create
     @PostMapping("/criar")
-    public NinjaDTO criar(@RequestBody NinjaDTO ninja){
-        return ninjaService.criar(ninja);
+    public ResponseEntity<NinjaDTO> criar(@RequestBody NinjaDTO ninja){
+        NinjaDTO ninjaCriado = ninjaService.criar(ninja);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ninjaCriado);
     }
 
     //Read
     @GetMapping("/listar")
-    public List<NinjaDTO> listar(){
-        return ninjaService.listar();
+    public ResponseEntity<List<NinjaDTO>> listar(){
+        List<NinjaDTO> ninjaDTOList = ninjaService.listar();
+        return ResponseEntity.ok(ninjaDTOList);
     }
 
     //Read by ID
     @GetMapping("/listar/{id}")
-    public NinjaDTO listarPorId(@PathVariable Long id){
-        return ninjaService.listarPorId(id);
+    public ResponseEntity<NinjaDTO> listarPorId(@PathVariable Long id){
+        NinjaDTO ninjaDTO = ninjaService.listarPorId(id);
+        if (ninjaDTO != null){
+            return ResponseEntity.ok().body(ninjaDTO);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     //Update
     @PutMapping("/atualizar/{id}")
-    public NinjaDTO atualizaId(@PathVariable Long id, @RequestBody NinjaDTO ninjaDTO){
-        return ninjaService.atualizaId(id,ninjaDTO);
+    public ResponseEntity<NinjaDTO> atualizaId(@PathVariable Long id, @RequestBody NinjaDTO ninjaDTO){
+        NinjaDTO atualizaNinja = ninjaService.atualizaId(id,ninjaDTO);
+        if (atualizaNinja != null){
+            return ResponseEntity.ok().body(atualizaNinja);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     //Delete
     @DeleteMapping("/deletar/{id}")
-    public void deletarId(@PathVariable Long id){
-        ninjaService.deletarId(id);
+    public ResponseEntity<Void> deletarId(@PathVariable Long id){
+       boolean  deletarId = ninjaService.deletarId(id);
+        if (deletarId){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }

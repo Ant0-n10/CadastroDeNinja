@@ -25,4 +25,15 @@ public class MissoesMapper {
         return missoesDTO;
     }
 
+    public void updateModelFromDto(MissoesDTO dto, MissoesModel model) {
+
+        if (dto.getNome() != null) {
+            model.setNome(dto.getNome());
+        }
+
+        if (dto.getDificuldade() != null) {
+            model.setDificuldade(dto.getDificuldade());
+        }
+    }
+
 }

@@ -21,31 +21,39 @@ public class MissoesService {
     public MissoesDTO criar(MissoesDTO missoesDTO) {
         MissoesModel model = missoesMapper.map(missoesDTO);
         model = missoesRepository.save(model);
+
         return missoesMapper.map(model);
     }
 
     public List<MissoesDTO> listarMissoes(){
         List<MissoesModel> missoesModelList = missoesRepository.findAll();
+
         return missoesModelList.stream().map(missoesMapper::map).collect(Collectors.toList());
     }
 
     public MissoesDTO listarPorId(Long id){
         Optional<MissoesModel> optionalMissoesModel = missoesRepository.findById(id);
+
         return optionalMissoesModel.map(missoesMapper::map).orElse(null);
     }
 
-    public MissoesDTO atualizaId(Long id, MissoesDTO missoesDTO) {
+    public MissoesDTO atualizaPorId(Long id, MissoesDTO missoesDTO) {
        Optional<MissoesModel> optionalMissoesModel = missoesRepository.findById(id);
-        if (missoesRepository.existsById(id)) {
-            MissoesModel missoesAtualizado = missoesMapper.map(missoesDTO);
-            missoesAtualizado.setId(id);
-           MissoesModel missoesSave = missoesRepository.save(missoesAtualizado);
-           return missoesMapper.map(missoesSave);
+        if (optionalMissoesModel.isPresent()) {
+            MissoesModel missoesModelExistente = optionalMissoesModel.get();
+            missoesMapper.updateModelFromDto(missoesDTO, missoesModelExistente);
+            MissoesModel missoesSalva = missoesRepository.save(missoesModelExistente);
+
+            return missoesMapper.map(missoesSalva);
        }
         return null;
     }
 
-    public void deletarId(Long id) {
+    public boolean deletarId(Long id) {
+        if (!missoesRepository.existsById(id)){
+            return false;
+        }
         missoesRepository.deleteById(id);
+        return true;
     }
 }
